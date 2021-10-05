@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-sample-deployment
+  labels:
+    app: spring-hello-world
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-hello-world
+  template:
+    metadata:
+      labels:
+        app: spring-hello-world
+    spec:
+      containers:
+      - name: spingboot-k8s
+        image: demo_springboot-k8s:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9000
